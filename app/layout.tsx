@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Finance - Personal Finance Manager',
+  title: 'PropAI - Personal PropAI Manager',
   description: 'Track expenses, budget, and achieve financial freedom',
 }
 

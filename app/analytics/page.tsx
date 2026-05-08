@@ -12,7 +12,7 @@ import {
   ArrowTrendingDownIcon,
   UserGroupIcon,
   GlobeAltIcon
-} from '@heroicons/react/24/outline'
+, BuildingOffice2Icon } from '@heroicons/react/24/outline'
 
 export default function AnalyticsPage() {
   const [timeRange, setTimeRange] = useState('7d')
@@ -46,9 +46,9 @@ export default function AnalyticsPage() {
         <div className="container-custom py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
-              <SparklesIcon className="h-8 w-8 text-indigo-600" />
+              <BuildingOffice2Icon className="h-8 w-8 text-indigo-600" />
               <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                Hypermedia Oasis
+                PropAI
               </span>
             </Link>
             <div className="hidden md:flex items-center space-x-8">

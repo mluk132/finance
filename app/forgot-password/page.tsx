@@ -45,7 +45,7 @@ export default function ForgotPasswordPage() {
           <Link href="/" className="inline-flex items-center gap-2 mb-6">
             <CurrencyDollarIcon className="h-10 w-10 text-blue-600" />
             <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              Finance
+              PropAI
             </span>
           </Link>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Forgot Password?</h1>

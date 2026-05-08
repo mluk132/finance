@@ -8,7 +8,7 @@ import {
   CurrencyDollarIcon,
   HomeModernIcon,
   MapPinIcon
-} from '@heroicons/react/24/outline';
+, BuildingOffice2Icon } from '@heroicons/react/24/outline';
 
 export default function Home() {
   const features = [
