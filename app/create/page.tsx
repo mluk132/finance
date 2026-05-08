@@ -5,32 +5,21 @@ import Link from 'next/link'
 import { 
   BuildingOffice2Icon,
   SparklesIcon,
-  PhotoIcon,
-  VideoCameraIcon,
-  MusicalNoteIcon,
-  CodeBracketIcon,
-  EyeIcon,
-  CloudArrowUpIcon,
+  MapPinIcon,
+  CurrencyDollarIcon,
+  CalendarIcon,
+  HomeModernIcon,
+  ChartBarIcon,
   DocumentTextIcon
 } from '@heroicons/react/24/outline'
 
 export default function CreatePage() {
-  const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
-  const [tags, setTags] = useState<string[]>([])
-  const [tagInput, setTagInput] = useState('')
-  const [preview, setPreview] = useState(false)
-
-  const addTag = () => {
-    if (tagInput && !tags.includes(tagInput)) {
-      setTags([...tags, tagInput])
-      setTagInput('')
-    }
-  }
-
-  const removeTag = (tagToRemove: string) => {
-    setTags(tags.filter(tag => tag !== tagToRemove))
-  }
+  const [projectName, setProjectName] = useState('')
+  const [location, setLocation] = useState('')
+  const [budget, setBudget] = useState('')
+  const [description, setDescription] = useState('')
+  const [projectType, setProjectType] = useState('residential')
+  const [startDate, setStartDate] = useState('')
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -45,11 +34,11 @@ export default function CreatePage() {
               </span>
             </Link>
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="/feed" className="text-gray-700 hover:text-blue-600 transition-colors">
-                Feed
+              <Link href="/projects" className="text-gray-700 hover:text-blue-600 transition-colors">
+                Projects
               </Link>
               <Link href="/create" className="text-blue-600 font-semibold">
-                Create
+                New Project
               </Link>
               <Link href="/analytics" className="text-gray-700 hover:text-blue-600 transition-colors">
                 Analytics
@@ -64,183 +53,178 @@ export default function CreatePage() {
         <div className="container-custom max-w-6xl">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-4xl font-bold mb-2">Create Content</h1>
-            <p className="text-gray-600 text-lg">Craft your story with rich hypermedia elements</p>
+            <h1 className="text-4xl font-bold mb-2">Create New Development Project</h1>
+            <p className="text-gray-600 text-lg">Track your real estate development from start to finish</p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            {/* Editor */}
+            {/* Main Form */}
             <div className="lg:col-span-2 space-y-6">
-              {/* Title */}
+              {/* Project Name */}
               <div className="card p-6">
-                <label className="block text-sm font-semibold mb-2">Title</label>
+                <label className="block text-sm font-semibold mb-2">Project Name</label>
                 <input
                   type="text"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                  placeholder="Enter your title..."
-                  className="w-full text-3xl font-bold border-none focus:ring-0 focus:outline-none placeholder:text-gray-300"
+                  value={projectName}
+                  onChange={(e) => setProjectName(e.target.value)}
+                  placeholder="e.g., Downtown Tower Residences"
+                  className="w-full text-2xl font-bold border-none focus:ring-0 focus:outline-none placeholder:text-gray-300"
                 />
               </div>
 
-              {/* Content Editor */}
+              {/* Location */}
               <div className="card p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <label className="text-sm font-semibold">Content</label>
-                  <div className="flex gap-2">
-                    <button 
-                      onClick={() => setPreview(!preview)}
-                      className="btn btn-ghost text-sm flex items-center gap-2"
-                    >
-                      <EyeIcon className="h-4 w-4" />
-                      {preview ? 'Edit' : 'Preview'}
-                    </button>
-                  </div>
-                </div>
+                <label className="block text-sm font-semibold mb-2 flex items-center gap-2">
+                  <MapPinIcon className="h-5 w-5 text-blue-600" />
+                  Location
+                </label>
+                <input
+                  type="text"
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                  placeholder="Enter property address or location"
+                  className="w-full input"
+                />
+              </div>
 
-                {!preview ? (
-                  <textarea
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
-                    placeholder="Start writing your story..."
-                    className="w-full h-96 border-none focus:ring-0 focus:outline-none resize-none text-lg leading-relaxed"
-                  />
-                ) : (
-                  <div className="prose prose-lg max-w-none h-96 overflow-y-auto">
-                    <div className="whitespace-pre-wrap">{content || 'Nothing to preview yet...'}</div>
+              {/* Budget & Timeline */}
+              <div className="card p-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-semibold mb-2 flex items-center gap-2">
+                      <CurrencyDollarIcon className="h-5 w-5 text-blue-600" />
+                      Total Budget
+                    </label>
+                    <input
+                      type="text"
+                      value={budget}
+                      onChange={(e) => setBudget(e.target.value)}
+                      placeholder="$2,500,000"
+                      className="w-full input"
+                    />
                   </div>
-                )}
-
-                {/* Toolbar */}
-                <div className="flex gap-2 pt-4 border-t border-gray-200">
-                  <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors" title="Add Image">
-                    <PhotoIcon className="h-5 w-5 text-gray-600" />
-                  </button>
-                  <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors" title="Add Video">
-                    <VideoCameraIcon className="h-5 w-5 text-gray-600" />
-                  </button>
-                  <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors" title="Add Audio">
-                    <MusicalNoteIcon className="h-5 w-5 text-gray-600" />
-                  </button>
-                  <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors" title="Embed Code">
-                    <CodeBracketIcon className="h-5 w-5 text-gray-600" />
-                  </button>
-                  <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors" title="Upload File">
-                    <CloudArrowUpIcon className="h-5 w-5 text-gray-600" />
-                  </button>
+                  <div>
+                    <label className="block text-sm font-semibold mb-2 flex items-center gap-2">
+                      <CalendarIcon className="h-5 w-5 text-blue-600" />
+                      Start Date
+                    </label>
+                    <input
+                      type="date"
+                      value={startDate}
+                      onChange={(e) => setStartDate(e.target.value)}
+                      className="w-full input"
+                    />
+                  </div>
                 </div>
               </div>
 
-              {/* Tags */}
+              {/* Project Description */}
               <div className="card p-6">
-                <label className="block text-sm font-semibold mb-2">Tags</label>
-                <div className="flex gap-2 mb-3 flex-wrap">
-                  {tags.map((tag) => (
-                    <span 
-                      key={tag}
-                      className="px-3 py-1 bg-blue-100 text-indigo-700 rounded-full text-sm font-medium flex items-center gap-2"
-                    >
-                      #{tag}
-                      <button 
-                        onClick={() => removeTag(tag)}
-                        className="hover:text-indigo-900"
-                      >
-                        ×
-                      </button>
-                    </span>
-                  ))}
-                </div>
-                <div className="flex gap-2">
-                  <input
-                    type="text"
-                    value={tagInput}
-                    onChange={(e) => setTagInput(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && addTag()}
-                    placeholder="Add a tag..."
-                    className="flex-1 input"
-                  />
-                  <button onClick={addTag} className="btn btn-secondary">
-                    Add
-                  </button>
+                <label className="block text-sm font-semibold mb-2">Project Description</label>
+                <textarea
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="Describe your development project, key features, target market, etc..."
+                  className="w-full h-48 border-none focus:ring-0 focus:outline-none resize-none text-lg leading-relaxed"
+                />
+              </div>
+
+              {/* Project Details */}
+              <div className="card p-6">
+                <h3 className="font-semibold mb-4">Project Details</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Number of Units</label>
+                    <input type="number" placeholder="24" className="w-full input" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Square Footage</label>
+                    <input type="text" placeholder="45,000 sq ft" className="w-full input" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Floors</label>
+                    <input type="number" placeholder="8" className="w-full input" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Parking Spaces</label>
+                    <input type="number" placeholder="30" className="w-full input" />
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Sidebar */}
             <div className="space-y-6">
-              {/* Publish */}
+              {/* Create Project */}
               <div className="card p-6">
-                <h3 className="font-semibold mb-4">Publish</h3>
+                <h3 className="font-semibold mb-4">Create Project</h3>
                 <div className="space-y-3">
                   <button className="w-full btn btn-primary">
-                    Publish Now
+                    Create Project
                   </button>
                   <button className="w-full btn btn-secondary">
                     Save Draft
                   </button>
-                  <button className="w-full btn btn-ghost">
-                    Schedule
-                  </button>
                 </div>
               </div>
 
-              {/* Settings */}
+              {/* Project Type */}
               <div className="card p-6">
-                <h3 className="font-semibold mb-4">Settings</h3>
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Visibility</label>
-                    <select className="w-full input">
-                      <option>Public</option>
-                      <option>Private</option>
-                      <option>Unlisted</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Category</label>
-                    <select className="w-full input">
-                      <option>Article</option>
-                      <option>Tutorial</option>
-                      <option>Story</option>
-                      <option>Review</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="flex items-center gap-2">
-                      <input type="checkbox" className="rounded" />
-                      <span className="text-sm">Allow comments</span>
+                <h3 className="font-semibold mb-4 flex items-center gap-2">
+                  <HomeModernIcon className="h-5 w-5 text-blue-600" />
+                  Project Type
+                </h3>
+                <div className="space-y-2">
+                  {['Residential', 'Commercial', 'Mixed-Use', 'Industrial', 'Retail'].map((type) => (
+                    <label key={type} className="flex items-center gap-2 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                      <input 
+                        type="radio" 
+                        name="projectType" 
+                        value={type.toLowerCase()}
+                        checked={projectType === type.toLowerCase()}
+                        onChange={(e) => setProjectType(e.target.value)}
+                        className="text-blue-600"
+                      />
+                      <span className="text-sm font-medium">{type}</span>
                     </label>
-                  </div>
-                  <div>
-                    <label className="flex items-center gap-2">
-                      <input type="checkbox" className="rounded" />
-                      <span className="text-sm">Featured content</span>
-                    </label>
-                  </div>
+                  ))}
                 </div>
               </div>
 
-              {/* Media Library */}
-              <div className="card p-6">
-                <h3 className="font-semibold mb-4">Media Library</h3>
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-indigo-400 transition-colors cursor-pointer">
-                  <CloudArrowUpIcon className="h-12 w-12 text-gray-400 mx-auto mb-2" />
-                  <p className="text-sm text-gray-600">Drop files here or click to upload</p>
-                </div>
-              </div>
-
-              {/* Tips */}
-              <div className="card p-6 bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200">
+              {/* AI Insights */}
+              <div className="card p-6 bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200">
                 <h3 className="font-semibold mb-2 flex items-center gap-2">
                   <SparklesIcon className="h-5 w-5 text-blue-600" />
-                  Pro Tips
+                  AI Insights
                 </h3>
                 <ul className="text-sm text-gray-700 space-y-2">
-                  <li>• Use compelling titles to grab attention</li>
-                  <li>• Add relevant tags for discoverability</li>
-                  <li>• Include rich media to enhance engagement</li>
-                  <li>• Preview before publishing</li>
+                  <li>• Market analysis will be generated</li>
+                  <li>• ROI predictions based on location</li>
+                  <li>• Budget recommendations</li>
+                  <li>• Timeline optimization</li>
                 </ul>
+              </div>
+
+              {/* Quick Stats */}
+              <div className="card p-6">
+                <h3 className="font-semibold mb-4 flex items-center gap-2">
+                  <ChartBarIcon className="h-5 w-5 text-blue-600" />
+                  Your Portfolio
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-gray-600">Active Projects</span>
+                    <span className="font-bold text-blue-600">12</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-gray-600">Total Investment</span>
+                    <span className="font-bold text-blue-600">$45M</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-gray-600">Avg. ROI</span>
+                    <span className="font-bold text-green-600">+18%</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
