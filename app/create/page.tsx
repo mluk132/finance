@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { 
   BuildingOffice2Icon,
@@ -12,14 +13,57 @@ import {
   ChartBarIcon,
   DocumentTextIcon
 } from '@heroicons/react/24/outline'
+import { api } from '@/lib/api'
 
 export default function CreatePage() {
+  const router = useRouter()
   const [projectName, setProjectName] = useState('')
   const [location, setLocation] = useState('')
   const [budget, setBudget] = useState('')
   const [description, setDescription] = useState('')
   const [projectType, setProjectType] = useState('residential')
   const [startDate, setStartDate] = useState('')
+  const [units, setUnits] = useState('')
+  const [squareFootage, setSquareFootage] = useState('')
+  const [floors, setFloors] = useState('')
+  const [parkingSpaces, setParkingSpaces] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+  const [success, setSuccess] = useState(false)
+
+  const handleSubmit = async () => {
+    if (!projectName || !location) {
+      setError('Project name and location are required')
+      return
+    }
+
+    setLoading(true)
+    setError('')
+    
+    try {
+      const result = await api.createProject({
+        name: projectName,
+        location,
+        budget: budget ? parseFloat(budget) : undefined,
+        projectType,
+        startDate: startDate || undefined,
+        description: description || undefined,
+        units: units ? parseInt(units) : undefined,
+        squareFootage: squareFootage ? parseInt(squareFootage) : undefined,
+        floors: floors ? parseInt(floors) : undefined,
+        parkingSpaces: parkingSpaces ? parseInt(parkingSpaces) : undefined,
+      })
+      
+      setSuccess(true)
+      setTimeout(() => {
+        router.push(`/projects/${result.project.id}`)
+      }, 1500)
+    } catch (err: any) {
+      setError(err.message || 'Failed to create project')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -135,19 +179,43 @@ export default function CreatePage() {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-2">Number of Units</label>
-                    <input type="number" placeholder="24" className="w-full input" />
+                    <input 
+                      type="number" 
+                      placeholder="24" 
+                      className="w-full input"
+                      value={units}
+                      onChange={(e) => setUnits(e.target.value)}
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Square Footage</label>
-                    <input type="text" placeholder="45,000 sq ft" className="w-full input" />
+                    <input 
+                      type="text" 
+                      placeholder="45000" 
+                      className="w-full input"
+                      value={squareFootage}
+                      onChange={(e) => setSquareFootage(e.target.value)}
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Floors</label>
-                    <input type="number" placeholder="8" className="w-full input" />
+                    <input 
+                      type="number" 
+                      placeholder="8" 
+                      className="w-full input"
+                      value={floors}
+                      onChange={(e) => setFloors(e.target.value)}
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Parking Spaces</label>
-                    <input type="number" placeholder="30" className="w-full input" />
+                    <input 
+                      type="number" 
+                      placeholder="30" 
+                      className="w-full input"
+                      value={parkingSpaces}
+                      onChange={(e) => setParkingSpaces(e.target.value)}
+                    />
                   </div>
                 </div>
               </div>
@@ -158,9 +226,23 @@ export default function CreatePage() {
               {/* Create Project */}
               <div className="card p-6">
                 <h3 className="font-semibold mb-4">Create Project</h3>
+                {error && (
+                  <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+                    {error}
+                  </div>
+                )}
+                {success && (
+                  <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm">
+                    ✅ Project created! Redirecting...
+                  </div>
+                )}
                 <div className="space-y-3">
-                  <button className="w-full btn btn-primary">
-                    Create Project
+                  <button 
+                    onClick={handleSubmit}
+                    disabled={loading || success}
+                    className="w-full btn btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {loading ? 'Creating...' : 'Create Project'}
                   </button>
                   <button className="w-full btn btn-secondary">
                     Save Draft
