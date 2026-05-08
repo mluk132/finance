@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { 
+  BuildingOffice2Icon,
   SparklesIcon,
   PhotoIcon,
   VideoCameraIcon,
@@ -11,7 +12,7 @@ import {
   EyeIcon,
   CloudArrowUpIcon,
   DocumentTextIcon
-, BuildingOffice2Icon } from '@heroicons/react/24/outline'
+} from '@heroicons/react/24/outline'
 
 export default function CreatePage() {
   const [title, setTitle] = useState('')

@@ -3,14 +3,14 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { 
-  SparklesIcon,
+  BuildingOffice2Icon,
   HeartIcon,
   ChatBubbleLeftIcon,
   ShareIcon,
   BookmarkIcon,
   FunnelIcon,
   MagnifyingGlassIcon
-, BuildingOffice2Icon } from '@heroicons/react/24/outline'
+} from '@heroicons/react/24/outline'
 import { HeartIcon as HeartSolidIcon, BookmarkIcon as BookmarkSolidIcon } from '@heroicons/react/24/solid'
 
 interface ContentItem {
