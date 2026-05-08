@@ -32,7 +32,7 @@ export default function SettingsPage() {
             </Link>
 
             <Link href="/settings/notifications" className="card p-6 hover-lift cursor-pointer">
-              <BellIcon className="h-8 w-8 text-indigo-600 mb-3" />
+              <BellIcon className="h-8 w-8 text-blue-600 mb-3" />
               <h3 className="text-xl font-bold mb-2">Notifications</h3>
               <p className="text-gray-600">Manage bill reminders and alerts</p>
             </Link>

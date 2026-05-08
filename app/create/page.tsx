@@ -38,22 +38,22 @@ export default function CreatePage() {
         <div className="container-custom py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
-              <BuildingOffice2Icon className="h-8 w-8 text-indigo-600" />
-              <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              <BuildingOffice2Icon className="h-8 w-8 text-blue-600" />
+              <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                 PropAI
               </span>
             </Link>
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="/feed" className="text-gray-700 hover:text-indigo-600 transition-colors">
+              <Link href="/feed" className="text-gray-700 hover:text-blue-600 transition-colors">
                 Feed
               </Link>
-              <Link href="/create" className="text-indigo-600 font-semibold">
+              <Link href="/create" className="text-blue-600 font-semibold">
                 Create
               </Link>
-              <Link href="/analytics" className="text-gray-700 hover:text-indigo-600 transition-colors">
+              <Link href="/analytics" className="text-gray-700 hover:text-blue-600 transition-colors">
                 Analytics
               </Link>
-              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 cursor-pointer"></div>
+              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 cursor-pointer"></div>
             </div>
           </div>
         </div>
@@ -137,7 +137,7 @@ export default function CreatePage() {
                   {tags.map((tag) => (
                     <span 
                       key={tag}
-                      className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium flex items-center gap-2"
+                      className="px-3 py-1 bg-blue-100 text-indigo-700 rounded-full text-sm font-medium flex items-center gap-2"
                     >
                       #{tag}
                       <button 
@@ -231,7 +231,7 @@ export default function CreatePage() {
               {/* Tips */}
               <div className="card p-6 bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200">
                 <h3 className="font-semibold mb-2 flex items-center gap-2">
-                  <SparklesIcon className="h-5 w-5 text-indigo-600" />
+                  <SparklesIcon className="h-5 w-5 text-blue-600" />
                   Pro Tips
                 </h3>
                 <ul className="text-sm text-gray-700 space-y-2">

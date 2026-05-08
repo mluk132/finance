@@ -112,9 +112,9 @@ export default function ProfilePage() {
             <div className="card p-6 hover-lift">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-gray-600">Monthly Savings</span>
-                <CurrencyDollarIcon className="h-5 w-5 text-indigo-600" />
+                <CurrencyDollarIcon className="h-5 w-5 text-blue-600" />
               </div>
-              <div className="text-3xl font-bold text-indigo-600">${stats.monthlySavings.toLocaleString()}</div>
+              <div className="text-3xl font-bold text-blue-600">${stats.monthlySavings.toLocaleString()}</div>
               <div className="text-sm text-gray-500 mt-1">This month</div>
             </div>
             <div className="card p-6 hover-lift">
@@ -182,9 +182,9 @@ export default function ProfilePage() {
                       <span className="font-medium">Add Expense</span>
                     </div>
                   </Link>
-                  <Link href="/budget" className="block p-3 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors">
+                  <Link href="/budget" className="block p-3 bg-indigo-50 rounded-lg hover:bg-blue-100 transition-colors">
                     <div className="flex items-center gap-3">
-                      <ChartPieIcon className="h-5 w-5 text-indigo-600" />
+                      <ChartPieIcon className="h-5 w-5 text-blue-600" />
                       <span className="font-medium">View Budget</span>
                     </div>
                   </Link>
@@ -216,7 +216,7 @@ export default function ProfilePage() {
                       <span className="text-sm text-gray-600">40%</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div className="bg-indigo-600 h-2 rounded-full" style={{ width: '40%' }}></div>
+                      <div className="bg-blue-600 h-2 rounded-full" style={{ width: '40%' }}></div>
                     </div>
                     <div className="text-sm text-gray-600 mt-1">$2,000 / $5,000</div>
                   </div>

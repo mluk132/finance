@@ -114,22 +114,22 @@ export default function FeedPage() {
         <div className="container-custom py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
-              <BuildingOffice2Icon className="h-8 w-8 text-indigo-600" />
-              <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              <BuildingOffice2Icon className="h-8 w-8 text-blue-600" />
+              <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                 PropAI
               </span>
             </Link>
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="/feed" className="text-indigo-600 font-semibold">
+              <Link href="/feed" className="text-blue-600 font-semibold">
                 Feed
               </Link>
-              <Link href="/create" className="text-gray-700 hover:text-indigo-600 transition-colors">
+              <Link href="/create" className="text-gray-700 hover:text-blue-600 transition-colors">
                 Create
               </Link>
-              <Link href="/analytics" className="text-gray-700 hover:text-indigo-600 transition-colors">
+              <Link href="/analytics" className="text-gray-700 hover:text-blue-600 transition-colors">
                 Analytics
               </Link>
-              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 cursor-pointer"></div>
+              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 cursor-pointer"></div>
             </div>
           </div>
         </div>
@@ -171,7 +171,7 @@ export default function FeedPage() {
                 onClick={() => setFilter(tag)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   filter === tag
-                    ? 'bg-indigo-600 text-white'
+                    ? 'bg-blue-600 text-white'
                     : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
                 }`}
               >
@@ -197,7 +197,7 @@ export default function FeedPage() {
                       className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors"
                     >
                       {item.bookmarked ? (
-                        <BookmarkSolidIcon className="h-5 w-5 text-indigo-600" />
+                        <BookmarkSolidIcon className="h-5 w-5 text-blue-600" />
                       ) : (
                         <BookmarkIcon className="h-5 w-5 text-gray-700" />
                       )}
@@ -221,7 +221,7 @@ export default function FeedPage() {
                   </div>
 
                   {/* Title and Excerpt */}
-                  <h3 className="text-xl font-bold mb-2 hover:text-indigo-600 cursor-pointer transition-colors">
+                  <h3 className="text-xl font-bold mb-2 hover:text-blue-600 cursor-pointer transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-gray-600 mb-4 line-clamp-2">

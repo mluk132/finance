@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { 
-  SparklesIcon,
+  BuildingOffice2Icon,
   ChartBarIcon,
   EyeIcon,
   HeartIcon,
@@ -12,7 +12,7 @@ import {
   ArrowTrendingDownIcon,
   UserGroupIcon,
   GlobeAltIcon
-, BuildingOffice2Icon } from '@heroicons/react/24/outline'
+} from '@heroicons/react/24/outline'
 
 export default function AnalyticsPage() {
   const [timeRange, setTimeRange] = useState('7d')
@@ -46,22 +46,22 @@ export default function AnalyticsPage() {
         <div className="container-custom py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
-              <BuildingOffice2Icon className="h-8 w-8 text-indigo-600" />
-              <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              <BuildingOffice2Icon className="h-8 w-8 text-blue-600" />
+              <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                 PropAI
               </span>
             </Link>
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="/feed" className="text-gray-700 hover:text-indigo-600 transition-colors">
+              <Link href="/feed" className="text-gray-700 hover:text-blue-600 transition-colors">
                 Feed
               </Link>
-              <Link href="/create" className="text-gray-700 hover:text-indigo-600 transition-colors">
+              <Link href="/create" className="text-gray-700 hover:text-blue-600 transition-colors">
                 Create
               </Link>
-              <Link href="/analytics" className="text-indigo-600 font-semibold">
+              <Link href="/analytics" className="text-blue-600 font-semibold">
                 Analytics
               </Link>
-              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 cursor-pointer"></div>
+              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 cursor-pointer"></div>
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@ export default function AnalyticsPage() {
                   onClick={() => setTimeRange(range)}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     timeRange === range
-                      ? 'bg-indigo-600 text-white'
+                      ? 'bg-blue-600 text-white'
                       : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
                   }`}
                 >
@@ -97,8 +97,8 @@ export default function AnalyticsPage() {
             {stats.map((stat, index) => (
               <div key={index} className="card p-6 hover-lift animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-indigo-100 flex items-center justify-center">
-                    <stat.icon className="h-6 w-6 text-indigo-600" />
+                  <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center">
+                    <stat.icon className="h-6 w-6 text-blue-600" />
                   </div>
                   <div className={`flex items-center gap-1 text-sm font-medium ${
                     stat.trend === 'up' ? 'text-green-600' : 'text-red-600'
@@ -167,7 +167,7 @@ export default function AnalyticsPage() {
               {/* Audience Demographics */}
               <div className="card p-6">
                 <div className="flex items-center gap-2 mb-6">
-                  <GlobeAltIcon className="h-6 w-6 text-indigo-600" />
+                  <GlobeAltIcon className="h-6 w-6 text-blue-600" />
                   <h3 className="text-xl font-bold">Audience by Country</h3>
                 </div>
                 <div className="space-y-4">
@@ -179,7 +179,7 @@ export default function AnalyticsPage() {
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2">
                         <div 
-                          className="bg-gradient-to-r from-indigo-600 to-purple-600 h-2 rounded-full transition-all duration-500"
+                          className="bg-gradient-to-r from-blue-600 to-indigo-600 h-2 rounded-full transition-all duration-500"
                           style={{ width: `${item.percentage}%` }}
                         ></div>
                       </div>
@@ -192,20 +192,20 @@ export default function AnalyticsPage() {
               </div>
 
               {/* Quick Stats */}
-              <div className="card p-6 bg-gradient-to-br from-indigo-600 to-purple-600 text-white">
+              <div className="card p-6 bg-gradient-to-br from-blue-600 to-indigo-600 text-white">
                 <h3 className="text-xl font-bold mb-6">This Week</h3>
                 <div className="space-y-4">
                   <div>
                     <div className="text-3xl font-bold">23</div>
-                    <div className="text-indigo-100 text-sm">New Posts</div>
+                    <div className="text-blue-100 text-sm">New Posts</div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold">1.2K</div>
-                    <div className="text-indigo-100 text-sm">New Followers</div>
+                    <div className="text-blue-100 text-sm">New Followers</div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold">89%</div>
-                    <div className="text-indigo-100 text-sm">Avg. Engagement</div>
+                    <div className="text-blue-100 text-sm">Avg. Engagement</div>
                   </div>
                 </div>
               </div>
