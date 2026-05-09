@@ -47,6 +47,12 @@ export default function Home() {
               <Link href="/projects" className="text-gray-600 hover:text-blue-600 transition-all hover:scale-105">
                 Projects
               </Link>
+              <Link href="/development" className="text-gray-600 hover:text-blue-600 transition-all hover:scale-105">
+                Development
+              </Link>
+              <Link href="/construction" className="text-gray-600 hover:text-blue-600 transition-all hover:scale-105">
+                Construction
+              </Link>
               <Link href="/analytics" className="text-gray-600 hover:text-blue-600 transition-all hover:scale-105">
                 Analytics
               </Link>
