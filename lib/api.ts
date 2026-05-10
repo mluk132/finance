@@ -14,6 +14,7 @@ export interface Project {
   floors?: number;
   parking_spaces?: number;
   status: string;
+  current_phase?: string;
   created_at: string;
   updated_at: string;
 }
@@ -37,7 +38,8 @@ class ApiClient {
 
   constructor() {
     this.baseUrl = API_URL;
-    this.userId = '00000000-0000-0000-0000-000000000000'; // TODO: Get from auth
+    // Demo user for no-auth mode
+    this.userId = '00000000-0000-0000-0000-000000000000';
   }
 
   private async request(endpoint: string, options: RequestInit = {}) {
@@ -48,17 +50,32 @@ class ApiClient {
       ...options.headers,
     };
 
-    const response = await fetch(url, {
-      ...options,
-      headers,
-    });
-
-    if (!response.ok) {
-      const error = await response.json().catch(() => ({ error: 'Request failed' }));
-      throw new Error(error.error || `HTTP ${response.status}`);
+    let response: Response;
+    try {
+      response = await fetch(url, {
+        ...options,
+        headers,
+      });
+    } catch (err: any) {
+      throw new Error(`Network error: ${err.message || 'Unable to reach server'}`);
     }
 
-    return response.json();
+    let data: any = null;
+    const contentType = response.headers.get('content-type') || '';
+    if (contentType.includes('application/json')) {
+      try {
+        data = await response.json();
+      } catch {
+        data = null;
+      }
+    }
+
+    if (!response.ok) {
+      const errMsg = data?.error || data?.message || `Request failed (HTTP ${response.status})`;
+      throw new Error(errMsg);
+    }
+
+    return data;
   }
 
   // Projects
@@ -94,7 +111,6 @@ class ApiClient {
     return this.request(`/api/projects/${id}/analytics`);
   }
 
-  // Health check
   async healthCheck() {
     return this.request('/health');
   }
